@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s; /*tempo de transição ao passar o mouse em cima dos links*/
+}
+
+a:hover {
+    opacity: 0.7;/*Sombra ao passar o mouse em cima*/
+}
+
+.logo {
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+nav { /*Barrinha de cima onde fica o logo*/
+    background: #23232e;
+    display: flex;
+    justify-content: space-around; /*Deixou o logo e os links ul com espaço entre eles*/
+    align-items: center;
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    height: 8vh; /*Altura*/
+}
+
+main {
+    background: url("/christian-macmillan-iXg90dspPZw-unsplash.jpg")no-repeat center center ; /*Imagem e posicionamento*/
+    background-size: cover;/*Caso a resolução do monitor seja maior que da imagem*/
+    height: 92vh;/*Completando assim os 100 junto com a nav*/
+}
+
+.nav-list {
+    list-style: none;
+    display: flex; /*Alinhar os links */
+}
+
+.nav-list li {
+    letter-spacing: 3px; /*Espaço entre as letras*/
+    margin-left: 32px; /*Separando um item do outro*/
+}
+
+.mobile-menu{
+    cursor: pointer; /*Para a mãozinha do mouse aparecer quando passar por cima do ícone*/
+    display: none; /*Para esconder ele (Para que apareça apenas em telas mobile)*/
+}
+
+.mobile-menu div {/*Menu hamburguer (circulo com três linhas)*/
+    width: 32px;
+    height: 2px;
+    background: #fff;
+    margin: 8px; /*Separa as linhas uma da outra*/
+    transition: 0.3s;
+}
+
+@media (max-width: 999px) { /*Personalização do menu*/
+    body {
+        overflow-x: hidden; /*Impede que a navegação transborde para fora do body*/
+    }
+    
+    .nav-list {
+        position: absolute;
+        top: 8vh; /*Para ficar logo abaixo do header*/
+        right: 0; /*Para ficar na direita*/
+        width: 50vw;
+        height: 92vh;
+        background: #23232e;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around; /*Espalhando os icones pelo espaço disponivel*/
+        transform: translateX(100%); /*Navegação foi pra fora do body do site*/
+        transition: transform 0.3s ease-in; /*Tempo de transição (abertura do menu) */
+    }
+
+    .nav-list li {
+        margin-left: 0;
+        opacity: 0;
+    }
+
+    .mobile-menu { /*Posicionar o menu hamburguer*/
+        display: block;
+    }
+
+    .nav-list.active { /*conexão com JavaScript*/
+        transform: translateX(0); /*Quando ativado voltará para 0*/
+    }
+
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.mobile-menu.active .line1 {
+    transform: rotate(-45deg) translate(-8 px, 8px);
+}
+
+.mobile-menu.active .line2 {
+    opacity: 0;
+}
+
+.mobile-menu.active .line3 {
+    transform: rotate(45deg) translate(-5 px, -7px);
+}
